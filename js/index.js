@@ -49,6 +49,7 @@ function loaded() {
         console.log(swiperList[i]);
         swiperList[i].style.width = swiperItemWidth + 'px';
     }
+    
     swiper();
 
 }
