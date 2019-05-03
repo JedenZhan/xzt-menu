@@ -23,6 +23,9 @@ body {
     border-radius: 10px;
     width: 90%;
 }
+.trans {
+    transition: all 500ms;
+}
 .container {
     width: 90%;
     margin: 0.5rem auto;

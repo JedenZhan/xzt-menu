@@ -1,8 +1,13 @@
 const swiperItemWidth = window.innerWidth,
     swiperUl = document.getElementById('swiperList'),
-    swiperList = swiperUl.children
+    swiperList = swiperUl.children;
 
-console.log(swiperList)
+let curr = 0, // 记录当前li的索引
+    time = null, // 存放定时器标识
+    flag = true,
+    liWidth = swiperItemWidth,
+    liLength = swiperList.length;
+console.log(swiperList);
 
 
 
@@ -10,7 +15,7 @@ function animation(offset, swiperListLength) {
     let newLeft = parseFloat(swiperUl.style.left) + offset,
         time = 300,
         interval = 10,
-        speed = offset/(time/interval);
+        speed = offset / (time / interval);
 
 
     function go() {
@@ -28,11 +33,22 @@ function animation(offset, swiperListLength) {
     go()
 }
 
+function move() {
+    if (true) {
+        curr++;
+        swiperUl.className = "swiper-container trans";
+        swiperUl.style.left = - curr * liWidth + "px";
+        time = setTimeout(() => {
+            requestAnimationFrame(move);
+        }, 2000);
+    }
+}
+
 
 function goNext() {
     let swiperListLength = swiperList.length,
-        offset = - swiperItemWidth;
-        animation(offset, swiperListLength)
+        offset = -swiperItemWidth;
+    animation(offset, swiperListLength)
     console.log(swiperUl.style.left)
 }
 
@@ -42,6 +58,14 @@ function swiper() {
     }, 3000);
 }
 
+swiperUl.addEventListener('transitionend', function () {
+    if (curr >= liLength - 1) {
+        swiperUl.className = "swiper-container";
+        swiperUl.style.left = 0 + "px";
+        curr = 0;
+    }
+}, false);
+
 function loaded() {
     // 给每一个照片加上width
     swiperUl.style.left = -swiperItemWidth + 'px';
@@ -49,8 +73,12 @@ function loaded() {
         console.log(swiperList[i]);
         swiperList[i].style.width = swiperItemWidth + 'px';
     }
-    
-    swiper();
+
+    // swiper();
+    flag = true;
+    setTimeout(() => {
+        requestAnimationFrame(move);
+    }, 2000);
 
 }
 
