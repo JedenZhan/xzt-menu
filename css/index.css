@@ -29,13 +29,12 @@ body {
 .container {
     width: 90%;
     margin: 0.5rem auto;
-    background-color: #eee;
     border-radius: 0.2rem;
 }
 .title {
-    color: #ccc;
+    color: #666;
     padding: 0.2rem;
-    border-bottom: aqua solid 0.05rem;
+    /* border-bottom: aqa solid 0.05rem; */
 }
 .content {
     display: flex;
@@ -43,19 +42,25 @@ body {
     flex-wrap: wrap;
     margin-top: 0.7rem;
 }
-.item {
-    margin: 0.3rem 1.5rem;
+.content a {
+    text-decoration: none;
 }
-.item i {
-    display: block;
+.item {
+    width: 25%;
+    margin: .5rem 0;
     text-align: center;
-    margin-bottom: 0.2rem;
-    font-size: 1.5rem;
-    color: aqua;
+}
+.item img {
+    display: block;
+    width: 60%;
+    margin: 0 auto;
 }
 .item span {
+    display: block;
     font-size: 0.8rem;
+    margin-top: 10px;
+    color: #0f0
 }
 .hidden {
-    opacity: 0;
+    visibility: hidden;
 }
